@@ -8,7 +8,7 @@ Summary:	Mustache for Python 2
 Summary(pl.UTF-8):	Mustache dla Pythona 2
 Name:		python-pystache
 Version:	0.5.4
-Release:	3
+Release:	4
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pystache/
