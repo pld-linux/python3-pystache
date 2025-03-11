@@ -6,7 +6,7 @@ Summary:	Mustache for Python 3
 Summary(pl.UTF-8):	Mustache dla Pythona 3
 Name:		python3-pystache
 Version:	0.6.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pystache/
