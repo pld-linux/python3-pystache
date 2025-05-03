@@ -5,13 +5,13 @@
 Summary:	Mustache for Python 3
 Summary(pl.UTF-8):	Mustache dla Pythona 3
 Name:		python3-pystache
-Version:	0.6.0
-Release:	3
+Version:	0.6.8
+Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pystache/
 Source0:	https://files.pythonhosted.org/packages/source/p/pystache/pystache-%{version}.tar.gz
-# Source0-md5:	c834ab23ec0d4a0e47cfa281bf7bfcd1
+# Source0-md5:	6e0437af5f51ab60f8e9e35d7a69d91f
 URL:		https://pypi.org/project/pystache/
 BuildRequires:	python3-modules >= 1:3.6
 BuildRequires:	python3-setuptools
@@ -40,7 +40,14 @@ w tym języku szablonów".
 %setup -q -n pystache-%{version}
 
 %build
-%py3_build %{?with_tests:test}
+%py3_build
+
+%if %{with tests}
+# use explicit plugins list for reliable builds (delete PYTEST_PLUGINS if empty)
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+PYTEST_PLUGINS= \
+%{__python3} -m pytest build-3
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -60,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc HISTORY.md LICENSE README.md TODO.md
+%doc CHANGELOG.rst HISTORY.md README.rst TODO.rst
 %attr(755,root,root) %{_bindir}/pystache
 %attr(755,root,root) %{_bindir}/pystache-3
 %{py3_sitescriptdir}/pystache
